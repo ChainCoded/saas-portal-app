@@ -1,0 +1,6 @@
+# Force shell scripts to use LF
+*.sh text eol=lf
+
+# YAML files also safer as LF
+*.yml text eol=lf
+*.yaml text eol=lf
