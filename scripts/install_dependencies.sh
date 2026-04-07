@@ -1,9 +1,8 @@
 #!/bin/bash
-#!/bin/bash
 set -eux
 
 dnf update -y
-dnf install -y httpd curl
+dnf install -y httpd
 
 if grep -q '^Listen 80$' /etc/httpd/conf/httpd.conf; then
   sed -i 's/^Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
