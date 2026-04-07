@@ -1,7 +1,16 @@
 #!/bin/bash
-set -e
+#!/bin/bash
+set -eux
 
-sudo yum update -y
-sudo yum install -y httpd
+dnf update -y
+dnf install -y httpd curl
 
-sudo systemctl enable httpd
+if grep -q '^Listen 80$' /etc/httpd/conf/httpd.conf; then
+  sed -i 's/^Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
+fi
+
+if grep -q '<VirtualHost \*:80>' /etc/httpd/conf/httpd.conf; then
+  sed -i 's/<VirtualHost \*:80>/<VirtualHost *:8080>/' /etc/httpd/conf/httpd.conf
+fi
+
+systemctl enable httpd
