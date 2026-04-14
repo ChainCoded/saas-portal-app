@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e
 
-curl -f http://localhost:8080/index.html
+curl -f http://localhost/health.html
+
+exit 0
