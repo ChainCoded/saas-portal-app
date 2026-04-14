@@ -2,10 +2,9 @@ version: 0.0
 os: linux
 
 files:
-  - source: /app/index.html
+  - source: /app
     destination: /var/www/html
-  - source: /app/health.html
-    destination: /var/www/html
+    overwrite: true
 
 hooks:
   BeforeInstall:
